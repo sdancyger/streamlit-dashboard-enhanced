@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 
 # Title and Introduction
 st.title('Enhanced Streamlit Dashboard')
@@ -55,12 +54,3 @@ filtered_df = df[df["learning_modality"] == modality]
 top_districts = filtered_df['district_name'].head(5).tolist()
 st.write(f"Top 5 districts with {modality} modality:", top_districts)
 
-# District Lookup
-st.markdown("### Learning Modality Lookup")
-district_input = st.text_input("Enter District Name:")
-if district_input:
-    district_data = df[df["district_name"].str.contains(district_input, case=False)]
-    if not district_data.empty:
-        st.write(f"{district_input} uses {district_data.iloc[0]['learning_modality']} modality.")
-    else:
-        st.write("District not found.")
