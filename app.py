@@ -55,3 +55,8 @@ ax.set_title("Histogram of Random Data")  # Set plot title
 ax.set_xlabel("Value")  # Set X-axis label
 ax.set_ylabel("Frequency")  # Set Y-axis label
 st.pyplot(fig)  # Display the plot in Streamlit
+
+import numpy as np
+data = np.random.randn(100)  # 100 random numbers
+streamlit run app.py
+plt.show()
