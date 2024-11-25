@@ -21,10 +21,7 @@ slider_value = st.slider('Select a value:', 0, 100, 50)
 st.write(f'You selected: {slider_value}')
 
 
-import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
+
 
 st.title("Enhanced Streamlit Dashboard")
 st.markdown("This dashboard includes interactive components, visualizations, and descriptive text.")
