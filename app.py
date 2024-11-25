@@ -80,10 +80,3 @@ st.markdown("### Data Histogram")
 fig, ax = plt.subplots()
 ax.hist(random_data, bins=10, color="blue", edgecolor="pink")
 st.pyplot(fig)
-
-# Dropdown to select learning modality + top districts
-st.markdown("### Districts by Learning Modality")
-modality = st.selectbox("Select Learning Modality", df["learning_modality"].unique())
-filtered_df = df[df["learning_modality"] == modality]
-
-
