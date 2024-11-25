@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-# Title 2024 AHI 507 Streamlit Example
+# Title- 2024 AHI 507 Streamlit Example
 st.title('2024 AHI 507 Streamlit Example')
 st.write('This dashboard displays interactive dataset features relating to School Learning Modalities')
 
