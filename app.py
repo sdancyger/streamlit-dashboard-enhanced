@@ -90,7 +90,6 @@ random_data = np.random.randn(slider_value)
 # Display
 st.line_chart(random_data)
 
-
 # Histogram 
 st.markdown("### Data Histogram")
 fig, ax = plt.subplots()
