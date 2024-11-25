@@ -86,7 +86,4 @@ st.markdown("### Districts by Learning Modality")
 modality = st.selectbox("Select Learning Modality", df["learning_modality"].unique())
 filtered_df = df[df["learning_modality"] == modality]
 
-# Display top 5 districts for selected modality
-top_districts = filtered_df['district_name'].head(5).tolist()
-st.write(f"Top 5 districts with {modality} modality:", top_districts)
 
