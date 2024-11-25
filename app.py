@@ -4,8 +4,8 @@ import pandas as pd
 import numpy as np
 
 # Streamlit
-st.title('Enhanced Streamlit Dashboard')
-st.write('This dashboard showcases visualizations and interactive widgets.')
+st.title('Data Collected')
+st.write('This dashboard displays clear visualizations & interactive widgets.')
 
 
 data = pd.DataFrame({
