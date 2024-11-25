@@ -49,7 +49,7 @@ data = np.random.randn(100)  # 100 random numbers
 
 # Create Histogram
 st.markdown("### Data Histogram")
-fig, ax = plt.subplots()
+
 ax.hist(data, bins=10, color="yellow", edgecolor="pink")
 ax.set_title("Histogram of Random Data")
 ax.set_xlabel("Value")
