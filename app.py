@@ -2,36 +2,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-# Custom CSS
-st.markdown(
-    """
-    <style>
-        /* Change button background color */
-        button[title="Run"] { 
-            background-color: #FF1493; 
-            color: white;
-        }
-        /* Change main text and title color */
-        .stApp {
-            color: #FF1493;
-        }
-        /* Change sidebar and widgets text color */
-        .css-1v3fvcr {
-            color: #FF1493;
-        }
-        /* Change header text color */
-        h1, h2, h3, .st-bw {
-            color: #FF1493;
-        }
-        /* Change background color of Streamlit app */
-        .stApp {
-            background-color: #f5f5f5;
-        }
-    </style>
-    """, 
-    unsafe_allow_html=True
-)
-
 # Title Enhanced streamlit dashboard
 st.title('Enhanced Streamlit Dashboard')
 st.write('This dashboard displays interactive dataset features relating to School Learning Modalities')
@@ -59,6 +29,8 @@ col3.metric("Number of unique districts/schools:", df['district_name'].nunique()
 
 ## exposing first 1k of NCES 20-21 data
 st.dataframe(df)
+
+
 
 table = pd.pivot_table(df, values='student_count', index=['week'],
                        columns=['learning_modality'], aggfunc="sum")
@@ -105,5 +77,6 @@ st.line_chart(random_data)
 
 # Histogram 
 st.markdown("### Data Histogram")
-import matplotlib.pyplot as plt
 fig, ax = plt.subplots()
+ax.hist(random_data, bins=10, color="blue", edgecolor="pink")
+st.pyplot(fig)
