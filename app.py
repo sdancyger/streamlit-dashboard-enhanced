@@ -1,5 +1,4 @@
 # kaggle data set import
-pip install kagglehub
 import kagglehub
 
 # Download dataset - "Hair Health"
