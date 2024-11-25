@@ -75,6 +75,22 @@ st.write(f"Generated Data:", pd.DataFrame(random_data, columns=["Values"]))
 # Line Chart
 st.line_chart(random_data)
 
+import streamlit as st
+import numpy as np
+
+# Title
+st.title('Interactive Line Chart with Slider')
+
+# Add slider
+slider_value = st.slider('Select the number of random data points:', min_value=10, max_value=100, value=50)
+
+# Generate random data based on slider
+random_data = np.random.randn(slider_value)
+
+# Display
+st.line_chart(random_data)
+
+
 # Histogram 
 st.markdown("### Data Histogram")
 fig, ax = plt.subplots()
