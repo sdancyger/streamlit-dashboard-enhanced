@@ -29,14 +29,26 @@ st.markdown("This dashboard includes interactive components, visualizations, & d
 # Interactive slider
 num = st.slider("Choose the number of data points", 10, 100, 50)
 
-# Pie chart
-st.write("### Pie Chart of Data Categories")
+import matplotlib.pyplot as plt
+
+import streamlit as st
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Example DataFrame for Pie Chart
+df = pd.DataFrame({
+    'Category': ['A', 'B', 'C', 'D'],
+    'Values': [23, 45, 12, 67]
+})
+
+# Creating the pie chart
 fig, ax = plt.subplots()
-ax.pie(df_pie['Values'], labels=df_pie['Category'], autopct='%1.1f%%', startangle=90, colors=['#ff9999', '#66b3ff', '#99ff99', '#ffcc99'])
+ax.pie(df['Values'], labels=df['Category'], autopct='%1.1f%%', startangle=90, colors=['#ff9999', '#66b3ff', '#99ff99', '#ffcc99'])
 ax.axis('equal')  
 
-# Display pie chart
+# Display the pie chart
 st.pyplot(fig)
+
 
 
 # Generate Random Data
