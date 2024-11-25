@@ -31,7 +31,6 @@ num = st.slider("Choose the number of data points", 10, 100, 50)
 
 import matplotlib.pyplot as plt
 matplotlib
-pip install matplotlib
 
 streamlit
 matplotlib
