@@ -6,6 +6,7 @@ import numpy as np
 st.title('Data Collected')
 st.write('This dashboard displays clear visualizations & interactive widgets.')
 
+
 data = pd.DataFrame({
     'Category': ['A', 'B', 'C', 'D'],
     'Values': [23, 45, 12, 67]
@@ -14,9 +15,11 @@ data = pd.DataFrame({
 # Bar chart
 st.bar_chart(data.set_index('Category'))
 
+
 # Slider Widget
 slider_value = st.slider('Select a value:', 0, 100, 50)
 st.write(f'You selected: {slider_value}')
+
 
 
 
@@ -33,6 +36,7 @@ streamlit
 matplotlib
 pandas
 numpy
+
 
 import streamlit as st
 import matplotlib.pyplot as plt
@@ -53,6 +57,7 @@ ax.axis('equal')
 st.pyplot(fig)
 
 
+
 # Generate Random Data
 data = np.random.randn(num)
 
@@ -61,6 +66,7 @@ st.write("Generated Data:", pd.DataFrame(data, columns=["Values"]))
 
 # Line Chart
 st.line_chart(data)
+
 
 import streamlit as st
 import numpy as np
