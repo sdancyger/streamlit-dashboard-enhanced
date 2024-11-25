@@ -58,25 +58,3 @@ ax.set_title("Histogram of Random Data")
 ax.set_xlabel("Value")
 ax.set_ylabel("Frequency")
 st.pyplot(fig)
-
-
-import streamlit as st
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-
-# Title
-st.title("Streamlit Dashboard with Checkboxes")
-
-# Generate Random Data
-data = np.random.randn(100)
-
-# Checkbox - data table
-if st.checkbox("Show Data Table"):
-    st.write("Here is the generated data:", pd.DataFrame(data, columns=["Values"]))
-
-# Checkbox -line chart
-if st.checkbox("Show Line Chart"):
-    st.markdown("### Line Chart")
-    st.line_chart(data)
-
