@@ -1,5 +1,4 @@
 # kaggle data set import
-import kagglehub
 
 # Download dataset - "Hair Health"
 path = kagglehub.dataset_download("amitvkulkarni/hair-health")
