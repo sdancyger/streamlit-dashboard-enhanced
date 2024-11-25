@@ -15,7 +15,6 @@ data = pd.DataFrame({
 # Bar chart
 st.bar_chart(data.set_index('Category'))
 
-
 # Slider Widget
 slider_value = st.slider('Select a value:', 0, 100, 50)
 st.write(f'You selected: {slider_value}')
