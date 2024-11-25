@@ -2,6 +2,25 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
+st.markdown(
+    """
+    <style>
+        .css-1v3fvcr { /* Streamlit button background color */
+            background-color: #FF1493; 
+        }
+        .st-bw { /* Streamlit text and title color */
+            color: #FF1493;
+        }
+        .st-ae { /* Adjust text in sidebar or widgets */
+            color: #FF1493;
+        }
+        .st-hg { /* Adjusting the header colors */
+            color: #FF1493;
+        }
+    </style>
+    """, 
+    unsafe_allow_html=True
+)
 # Title Enhanced streamlit dashboard
 st.title('Enhanced Streamlit Dashboard')
 st.write('This dashboard displays interactive dataset features relating to School Learning Modalities')
