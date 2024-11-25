@@ -12,90 +12,66 @@ st.text("""Focus on AD dataset.""")
 
 df = pd.read_csv("https://data.cdc.gov/Healthy-Aging/Alzheimer-s-Disease-and-Healthy-Aging-Data/hfr9-rurv/about_data")
 
-## data cleaning 
-df['week_recoded'] = pd.to_datetime(df['week'])
-df['zip_code'] = df['zip_code'].astype(str)
+data = pd.DataFrame({
+    'Category': ['A', 'B', 'C', 'D'],
+    'Values': [23, 45, 12, 67]
+})
 
-df['week'].value_counts()
+# Bar chart
+st.bar_chart(data.set_index('Category'))
 
-## box to show how many rows and columns of data we have: 
-col1, col2, col3 = st.columns(3)
-col1.metric("Columns", df.shape[1]) 
-col2.metric("Rows", len(df))
-col3.metric("Number of unique districts/schools:", df['district_name'].nunique())
 
-## exposing first 1k of NCES 20-21 data
-st.dataframe(df)
+# Slider Widget
+slider_value = st.slider('Select a value:', 0, 100, 50)
+st.write(f'You selected: {slider_value}')
 
 
 
-table = pd.pivot_table(df, values='student_count', index=['week'],
-                       columns=['learning_modality'], aggfunc="sum")
 
-table = table.reset_index()
-table.columns
+st.title("Data Collected Interactive Slider")
+st.markdown("This dashboard includes interactive components, visualizations, & descriptive text.")
 
-## line chart by week 
-st.bar_chart(
-    table,
-    x="week",
-    y="Hybrid",
-)
+# Interactive slider
+num = st.slider("Choose the number of data points", 10, 100, 50)
 
-st.bar_chart(
-    table,
-    x="week",
-    y="In Person",
-)
+import matplotlib.pyplot as plt
+matplotlib
 
-st.bar_chart(
-    table,
-    x="week",
-    y="Remote",
-)
+streamlit
+matplotlib
+pandas
+numpy
 
 
-# Streamlit app layout
-st.title("Districts by Learning Modality")
+import streamlit as st
+import matplotlib.pyplot as plt
+import pandas as pd
 
-# Display all modalities in a dropdown
-modalities = df["learning_modality"].unique()
-selected_modality = st.selectbox("Select a Learning Modality:", modalities)
+# Example DataFrame for Pie Chart
+df = pd.DataFrame({
+    'Category': ['A', 'B', 'C', 'D'],
+    'Values': [23, 45, 12, 67]
+})
 
-# Filter districts based on selected modality
-filtered_df = df[df["learning_modality"] == selected_modality]
+# Creating the pie chart
+fig, ax = plt.subplots()
+ax.pie(df['Values'], labels=df['Category'], autopct='%1.1f%%', startangle=90, colors=['#ff9999', '#66b3ff', '#99ff99', '#ffcc99'])
+ax.axis('equal')  
 
-# Limit to top 20 districts
-top_5_districts = filtered_df.head(20)
-
-# Display filtered districts
-st.subheader(f"20 Districts with Learning Modality: {selected_modality}")
-st.write(top_5_districts["district_name"].tolist())
-
-
-# Filter based on selected modality
-filtered_data = df[df["learning_modality"] == selected_modality]
+# Display the pie chart
+st.pyplot(fig)
 
 
-# Function to get the learning modality of a district
-def get_learning_modality(district_name):
-    """
-    Returns the learning modality for a given district name.
-    """
-    result = df[df["district_name"] == district_name]
-    if not result.empty:
-        return result.iloc[0]["learning_modality"]
-    else:
-        return "District not found"
 
-# Streamlit App Layout
-st.title("Learning Modality Lookup")
+# Generate Random Data
+data = np.random.randn(num)
 
-# Input from user
-district_input = st.text_input("Enter District Name:", "")
+# Display Data Table
+st.write("Generated Data:", pd.DataFrame(data, columns=["Values"]))
 
-# Display the learning modality if a district is entered
-if district_input:
-    modality = get_learning_modality(district_input)
-    st.write(f"The learning modality for **{district_input}** is: **{modality}**")
-    
+# Line Chart
+st.line_chart(data)
+
+
+import streamlit as st
+import numpy as np
