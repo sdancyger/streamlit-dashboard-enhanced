@@ -21,3 +21,9 @@ st.metric("Rows", len(df))
 
 # display top 5 rows
 st.dataframe(df.head())
+
+# rows
+col1, col2, col3 = st.columns(3)
+col1.metric("Columns", df.shape[1]) 
+col2.metric("Rows", len(df))
+col3.metric("Number of unique districts/schools:", df['district_name'].nunique())
