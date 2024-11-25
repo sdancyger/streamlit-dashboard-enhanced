@@ -4,9 +4,16 @@ import pandas as pd
 import numpy as np
 
 # Streamlit
-st.title('Data Collected')
-st.write('This dashboard displays clear visualizations & interactive widgets.')
+st.title('Predict Hair Fall Data Dashboard')
+st.write('This dashboard displays visualizations from the PredictHairFall dataset.')
 
+# Load the dataset
+file_path = "/Users/sarahdancyger/Downloads/PredictHairFall.csv"  # Update with the correct path
+df = pd.read_csv(file_path)
+
+# Show the dataset for reference
+st.write("Dataset Preview:")
+st.write(df.head())  # Display 
 
 data = pd.DataFrame({
     'Category': ['A', 'B', 'C', 'D'],
