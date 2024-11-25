@@ -38,10 +38,25 @@ st.write("Generated Data:", pd.DataFrame(data, columns=["Values"]))
 # Line Chart
 st.line_chart(data)
 
-# Histogram
+import matplotlib.pyplot as plt
+pip install matplotlib
+
+import streamlit as st
+import matplotlib.pyplot as plt
+import numpy as np
+
+st.title("Enhanced Streamlit Dashboard")
+
+# Generate Random Data
+data = np.random.randn(100)  # 100 random numbers
+
+# Create Histogram
 st.markdown("### Data Histogram")
 fig, ax = plt.subplots()
 ax.hist(data, bins=10, color="yellow", edgecolor="pink")
+ax.set_title("Histogram of Random Data")
+ax.set_xlabel("Value")
+ax.set_ylabel("Frequency")
 st.pyplot(fig)
 
 
