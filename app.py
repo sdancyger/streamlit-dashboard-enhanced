@@ -1,72 +1,29 @@
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
 import numpy as np
 
-# Streamlit
-st.title('Data Collected')
-st.write('This dashboard displays clear visualizations & interactive widgets.')
+# Streamlit App Title
+st.header("Alzheimer's Disease and Healthy Aging Dashboard")
+st.subheader("Exploring dataset data from 2024 Alzheimer's Disease and Healthy Aging.")
+
+# Load the dataset (first 100 rows)
+file_path = "/Users/sarahdancyger/Downloads/Alzheimer_s_Disease_and_Healthy_Aging_Data_20241124.csv"
+df = pd.read_csv(file_path).head(100)
 
 
-data = pd.DataFrame({
-    'Category': ['A', 'B', 'C', 'D'],
-    'Values': [23, 45, 12, 67]
-})
+# Data preview
+st.markdown("### Data Preview (First 100 Rows):")
+st.dataframe(df)
 
-# Bar chart
-st.bar_chart(data.set_index('Category'))
+# Data Cleaning (adjust columns as per the dataset you are using)
+# Check for any necessary data type conversions or missing data handling
+df['Year'] = pd.to_datetime(df['Year'], errors='coerce')  # Example: if there's a 'Year' column, make sure it's in datetime format
+df['Age_Group'] = df['Age_Group'].astype(str)  # Example: ensure 'Age_Group' column is a string
+df['Value'] = pd.to_numeric(df['Value'], errors='coerce')  # Example: ensure numeric column 'Value'
 
-
-# Slider Widget
-slider_value = st.slider('Select a value:', 0, 100, 50)
-st.write(f'You selected: {slider_value}')
-
-
-
-
-st.title("Data Collected Interactive Slider")
-st.markdown("This dashboard includes interactive components, visualizations, & descriptive text.")
-
-# Interactive slider
-num = st.slider("Choose the number of data points", 10, 100, 50)
-
-import matplotlib.pyplot as plt
-matplotlib
-
-streamlit
-matplotlib
-pandas
-numpy
-
-
-import streamlit as st
-import matplotlib.pyplot as plt
-import pandas as pd
-
-# Example DataFrame for Pie Chart
-df = pd.DataFrame({
-    'Category': ['A', 'B', 'C', 'D'],
-    'Values': [23, 45, 12, 67]
-})
-
-# Creating the pie chart
-fig, ax = plt.subplots()
-ax.pie(df['Values'], labels=df['Category'], autopct='%1.1f%%', startangle=90, colors=['#ff9999', '#66b3ff', '#99ff99', '#ffcc99'])
-ax.axis('equal')  
-
-# Display the pie chart
-st.pyplot(fig)
-
-
-
-# Generate Random Data
-data = np.random.randn(num)
-
-# Display Data Table
-st.write("Generated Data:", pd.DataFrame(data, columns=["Values"]))
-
-# Line Chart
-st.line_chart(data)
-
-
-import streamlit as st
-import numpy as np
+# Show data metrics
+col1, col2, col3 = st.columns(3)
+col1.metric("Columns", df.shape[1]) 
+col2.metric("Rows", len(df))
+col3.metric("Number of unique Age Groups", df['Age_Group'].nunique())
