@@ -23,11 +23,11 @@ st.write(f'You selected: {slider_value}')
 
 
 
-st.title("Enhanced Streamlit Dashboard")
-st.markdown("This dashboard includes interactive components, visualizations, and descriptive text.")
+st.title("Data Collected Interactive Slider")
+st.markdown("This dashboard includes interactive components, visualizations, & descriptive text.")
 
 # Interactive slider
-num = st.slider("Choose the number of data points", 10, 100, 50)
+num = st.slider("Choose the number of data points", 10, 100, 50, 100)
 
 # Generate Random Data
 data = np.random.randn(num)
