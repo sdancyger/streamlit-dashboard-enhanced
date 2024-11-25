@@ -13,13 +13,49 @@ df = pd.read_csv("https://healthdata.gov/resource/a8v3-a3m3.csv?$limit=50000")
 df['week_recoded'] = pd.to_datetime(df['week'])
 df['zip_code'] = df['zip_code'].astype(str)
 
-# Dataset metrics
+# Dataset metric
 st.metric("Rows", len(df))
-st.metric("Columns", df.shape[1])
-st.metric("Unique Districts", df['district_name'].nunique())
 
 # Display the top 5 rows of the dataset
 st.dataframe(df.head())
+
+df['week'].value_counts()
+
+## box to show how many rows and columns of data we have: 
+col1, col2, col3 = st.columns(3)
+col1.metric("Columns", df.shape[1]) 
+col2.metric("Rows", len(df))
+col3.metric("Number of unique districts/schools:", df['district_name'].nunique())
+
+## exposing first 1k of NCES 20-21 data
+st.dataframe(df)
+
+
+
+table = pd.pivot_table(df, values='student_count', index=['week'],
+                       columns=['learning_modality'], aggfunc="sum")
+
+table = table.reset_index()
+table.columns
+
+## line chart by week 
+st.bar_chart(
+    table,
+    x="week",
+    y="Hybrid",
+)
+
+st.bar_chart(
+    table,
+    x="week",
+    y="In Person",
+)
+
+st.bar_chart(
+    table,
+    x="week",
+    y="Remote",
+)
 
 # Bar chart
 st.markdown("### Learning Modalities by Week")
