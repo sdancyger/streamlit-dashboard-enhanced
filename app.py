@@ -13,17 +13,36 @@ data = pd.DataFrame({
     'Values': [23, 45, 12, 67]
 })
 
-# Bar chart
-st.bar_chart(data.set_index('Category'))
+import streamlit as st
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 
+# Streamlit
+st.title('Data Collected')
+st.write('This dashboard displays clear visualizations & interactive widgets.')
+
+# Example Data for Bar Chart
+data = pd.DataFrame({
+    'Category': ['A', 'B', 'C', 'D'],
+    'Values': [23, 45, 12, 67]
+})
+
+# Create a Custom Bar Chart with Yellow Bars and Pink Outlines
 fig, ax = plt.subplots()
-ax.bar(data['Category'], data['Values'], color=['#ff9999', '#66b3ff', '#99ff99', '#ffcc99'])
+ax.bar(data['Category'], data['Values'], color='yellow', edgecolor='pink')
 
+# Set chart labels and title
+ax.set_xlabel('Category')
+ax.set_ylabel('Values')
+ax.set_title('Bar Chart with Yellow Bars and Pink Outlines')
+
+# Display the custom bar chart in Streamlit
+st.pyplot(fig)
 
 # Slider Widget
 slider_value = st.slider('Select a value:', 0, 100, 50)
 st.write(f'You selected: {slider_value}')
-
 
 
 
