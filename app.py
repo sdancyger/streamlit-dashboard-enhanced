@@ -1,35 +1,3 @@
-# kaggle data set import
-
-# Download dataset - "Hair Health"
-path = kagglehub.dataset_download("amitvkulkarni/hair-health")
-
-# Print 
-print("Path to dataset files:", path)
-
-import streamlit as st
-import pandas as pd
-import kagglehub
-
-# Download dataset
-path = kagglehub.dataset_download("amitvkulkarni/hair-health")
-
-# Print
-st.write(f"Dataset downloaded to: {path}")
-
-# Load the dataset (assuming it's a CSV file)
-dataset_file = path + '/Predict Hair Fall.csv'
-
-# Read the CSV into a Pandas DataFrame
-df = pd.read_csv(dataset_file)
-
-# Display the dataset in the app
-st.write("Dataset Preview:")
-st.write(df.head())
-
-# Optionally, create visualizations
-st.write("Descriptive Statistics:")
-st.write(df.describe())
-
 
 import streamlit as st
 import pandas as pd
