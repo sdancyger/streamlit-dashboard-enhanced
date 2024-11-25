@@ -47,11 +47,11 @@ st.title("Enhanced Streamlit Dashboard")
 # Generate Random Data
 data = np.random.randn(100)  # 100 random numbers
 
-# Create Histogram
+# Histogram
 st.markdown("### Data Histogram")
-
-ax.hist(data, bins=10, color="yellow", edgecolor="pink")
-ax.set_title("Histogram of Random Data")
-ax.set_xlabel("Value")
-ax.set_ylabel("Frequency")
-st.pyplot(fig)
+fig, ax = plt.subplots()  # Create figure and axes
+ax.hist(data, bins=10, color="yellow", edgecolor="pink")  # Create histogram
+ax.set_title("Histogram of Random Data")  # Set plot title
+ax.set_xlabel("Value")  # Set X-axis label
+ax.set_ylabel("Frequency")  # Set Y-axis label
+st.pyplot(fig)  # Display the plot in Streamlit
