@@ -16,6 +16,10 @@ data = pd.DataFrame({
 # Bar chart
 st.bar_chart(data.set_index('Category'))
 
+fig, ax = plt.subplots()
+ax.bar(data['Category'], data['Values'], color=['#ff9999', '#66b3ff', '#99ff99', '#ffcc99'])
+
+
 # Slider Widget
 slider_value = st.slider('Select a value:', 0, 100, 50)
 st.write(f'You selected: {slider_value}')
