@@ -39,7 +39,7 @@ st.write("Generated Data:", pd.DataFrame(data, columns=["Values"]))
 st.line_chart(data)
 
 import matplotlib.pyplot as plt
-pip install matplotlib
+
 
 import streamlit as st
 import matplotlib.pyplot as plt
