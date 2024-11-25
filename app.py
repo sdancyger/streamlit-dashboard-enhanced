@@ -26,6 +26,9 @@ st.markdown("### Learning Modalities by Week")
 table = pd.pivot_table(df, values='student_count', index='week', columns='learning_modality', aggfunc='sum')
 table = table.reset_index()
 
+fig, ax = plt.subplots(figsize=(10, 6))
+table.plot(kind="bar", x="week", y=["Hybrid", "In Person", "Remote"], ax=ax, color=["pink", "lightpink", "hotpink"])
+
 st.bar_chart(table.set_index('week')['Hybrid'])
 st.bar_chart(table.set_index('week')['In Person'])
 st.bar_chart(table.set_index('week')['Remote'])
@@ -38,15 +41,11 @@ st.write(f"Generated Data:", pd.DataFrame(random_data, columns=["Values"]))
 
 # Line Chart
 st.line_chart(random_data)
-plt.plot(random_data, color="purple")
-st.pyplot(plt)
 
 # Histogram 
 st.markdown("### Data Histogram")
-fig, ax = plt.subplots(figsize=(10, 6))
-table.plot(kind="bar", x="week", y=["Hybrid", "In Person", "Remote"], ax=ax, color=["red", "blue", "green"])
-ax.set_xlabel("Week")
-ax.set_ylabel("Student Count")
+fig, ax = plt.subplots()
+ax.hist(random_data, bins=10, color="blue", edgecolor="pink")
 st.pyplot(fig)
 
 # Dropdown to select learning modality + top districts
