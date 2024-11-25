@@ -26,9 +26,6 @@ st.markdown("### Learning Modalities by Week")
 table = pd.pivot_table(df, values='student_count', index='week', columns='learning_modality', aggfunc='sum')
 table = table.reset_index()
 
-fig, ax = plt.subplots(figsize=(10, 6))
-table.plot(kind="bar", x="week", y=["Hybrid", "In Person", "Remote"], ax=ax, color=["pink", "lightpink", "hotpink"])
-
 st.bar_chart(table.set_index('week')['Hybrid'])
 st.bar_chart(table.set_index('week')['In Person'])
 st.bar_chart(table.set_index('week')['Remote'])
