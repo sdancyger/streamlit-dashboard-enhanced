@@ -41,17 +41,3 @@ st.line_chart(data)
 
 import streamlit as st
 import numpy as np
-
-st.title("Enhanced Streamlit Dashboard")
-
-# Generate Random Data
-data = np.random.randn(100)  # 100 random numbers
-
-# Histogram
-st.markdown("### Data Histogram")
-fig, ax = plt.subplots()  # Create figure and axes
-ax.hist(data, bins=10, color="yellow", edgecolor="pink")  # Create histogram
-ax.set_title("Histogram of Random Data")  # Set plot title
-ax.set_xlabel("Value")  # Set X-axis label
-ax.set_ylabel("Frequency")  # Set Y-axis label
-st.pyplot(fig)  # Display the plot in Streamlit
