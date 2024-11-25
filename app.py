@@ -30,6 +30,14 @@ st.markdown("This dashboard includes interactive components, visualizations, & d
 num = st.slider("Choose the number of data points", 10, 100, 50)
 
 import matplotlib.pyplot as plt
+matplotlib
+pip install matplotlib
+
+streamlit
+matplotlib
+pandas
+numpy
+
 
 import streamlit as st
 import matplotlib.pyplot as plt
