@@ -1,66 +1,40 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 
-# Streamlit
-st.title('Data Collected')
-st.write('This dashboard displays clear visualizations & interactive widgets.')
+# App title
+st.title("Learning Modalities")
 
-data = pd.DataFrame({
-    'Category': ['A', 'B', 'C', 'D'],
-    'Values': [23, 45, 12, 67]
-})
+# Introduction text
+st.write("""
+In this dashboard, we will visualize data relating to school learning modalities.
+""")
 
-# Bar chart
-st.bar_chart(data.set_index('Category'))
+# Load the dataset
+df = pd.read_csv("https://healthdata.gov/resource/a8v3-a3m3.csv?$limit=50000")
 
-# Slider Widget
-slider_value = st.slider('Select a value:', 0, 100, 50)
-st.write(f'You selected: {slider_value}')
+# data cleaning
+df['week_recoded'] = pd.to_datetime(df['week'])
+df['zip_code'] = df['zip_code'].astype(str)
 
+# display dataset
+st.metric("Rows", len(df))
+st.metric("Columns", df.shape[1])
+st.metric("Unique Districts", df['district_name'].nunique())
 
+# display top 5 rows
+st.dataframe(df.head())
 
-st.title("Data Collected Interactive Slider")
-st.markdown("This dashboard includes interactive components, visualizations, & descriptive text.")
+# create pivot table  
+pivot_table = pd.pivot_table(df, values='student_count', index='week', columns='learning_modality', aggfunc='sum')
 
-# Interactive slider
-num = st.slider("Choose the number of data points", 10, 100, 50)
+# Plot charts
+st.bar_chart(pivot_table["Hybrid"], use_container_width=True)
+st.bar_chart(pivot_table["In Person"], use_container_width=True)
+st.bar_chart(pivot_table["Remote"], use_container_width=True)
 
-import matplotlib.pyplot as plt
-matplotlib
+# Interactive modality
+modality = st.selectbox("Select Learning Modality", df["learning_modality"].unique())
+filtered_data = df[df["learning_modality"] == modality]
 
-streamlit
-matplotlib
-pandas
-numpy
-
-import streamlit as st
-import matplotlib.pyplot as plt
-import pandas as pd
-
-# Example DataFrame for Pie Chart
-df = pd.DataFrame({
-    'Category': ['A', 'B', 'C', 'D'],
-    'Values': [23, 45, 12, 67]
-})
-
-# Creating the pie chart
-fig, ax = plt.subplots()
-ax.pie(df['Values'], labels=df['Category'], autopct='%1.1f%%', startangle=90, colors=['#ff9999', '#66b3ff', '#99ff99', '#ffcc99'])
-ax.axis('equal')  
-
-# Display the pie chart
-st.pyplot(fig)
-
-
-# Generate Random Data
-data = np.random.randn(num)
-
-# Display Data Table
-st.write("Generated Data:", pd.DataFrame(data, columns=["Values"]))
-
-# Line Chart
-st.line_chart(data)
-
-import streamlit as st
-import numpy as np
+# Show top 5 districts
+st.write(f"Top 5 Districts using {modality}:", filtered_data['district_name'].head().tolist())
