@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 # Title Enhanced streamlit dashboard
-st.title('Enhanced Streamlit Dashboard')
+st.title('2024 AHI 507 Streamlit Example')
 st.write('This dashboard displays interactive dataset features relating to School Learning Modalities')
 
 # Load data - School Learning Modalities 
