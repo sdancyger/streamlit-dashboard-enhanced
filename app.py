@@ -29,6 +29,16 @@ st.markdown("This dashboard includes interactive components, visualizations, & d
 # Interactive slider
 num = st.slider("Choose the number of data points", 10, 100, 50)
 
+# Pie chart
+st.write("### Pie Chart of Data Categories")
+fig, ax = plt.subplots()
+ax.pie(df_pie['Values'], labels=df_pie['Category'], autopct='%1.1f%%', startangle=90, colors=['#ff9999', '#66b3ff', '#99ff99', '#ffcc99'])
+ax.axis('equal')  
+
+# Display pie chart
+st.pyplot(fig)
+
+
 # Generate Random Data
 data = np.random.randn(num)
 
