@@ -77,5 +77,7 @@ st.line_chart(random_data)
 
 # Histogram 
 st.markdown("### Data Histogram")
+fig, ax = plt.subplots()
 ax.hist(random_data, bins=10, color="blue", edgecolor="pink")
+st.pyplot(fig)
 
