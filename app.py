@@ -27,7 +27,7 @@ st.title("Data Collected Interactive Slider")
 st.markdown("This dashboard includes interactive components, visualizations, & descriptive text.")
 
 # Interactive slider
-num = st.slider("Choose the number of data points", 10, 100, 50, 100)
+num = st.slider("Choose the number of data points", 10, 100, 50)
 
 # Generate Random Data
 data = np.random.randn(num)
