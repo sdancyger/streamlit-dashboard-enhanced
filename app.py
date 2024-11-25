@@ -21,6 +21,3 @@ st.metric("Rows", len(df))
 
 # display top 5 rows
 st.dataframe(df.head())
-
-# Show top 5 districts
-st.write(f"Top 5 Districts using {modality}:", filtered_data['district_name'].head().tolist())
