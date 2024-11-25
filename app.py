@@ -40,7 +40,6 @@ st.line_chart(data)
 
 
 import streamlit as st
-import matplotlib.pyplot as plt
 import numpy as np
 
 st.title("Enhanced Streamlit Dashboard")
