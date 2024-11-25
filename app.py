@@ -1,3 +1,6 @@
+pip install matplotlib
+streamlit run app.py
+
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -54,3 +57,5 @@ if 'Values' in df.columns:
     
     # Display Pie Chart
     st.pyplot(fig)
+
+
